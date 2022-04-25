@@ -1,0 +1,9 @@
+order:
+  pay-timeout-seconds: 120
+  create-frequency-seconds: 10
+  desc: "订单支付超时时长为 ${order.pay-timeout-seconds} 秒，订单创建频率为 ${order.create-frequency-seconds} 秒"
+spring:
+  application:
+    name: demo-application
+  profiles:
+    active: dev
