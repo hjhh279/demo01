@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletResponse;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -58,8 +60,12 @@ public class FileController {
     @PostMapping("/upload")
     public AjaxResult upload(@RequestParam(value = "file") MultipartFile file) {
         String objectName = minioUtil.upload(file);
+        Map data = new HashMap();
+        data.put("url",prop.getEndpoint() + "/" + prop.getBucketName() + "/" + objectName);
+        data.put("name",objectName);
+        data.put("fileSize",file.getSize());
         if (null != objectName) {
-            return AjaxResult.success(prop.getEndpoint() + "/" + prop.getBucketName() + "/" + objectName);
+            return AjaxResult.success(data);
         }
         return AjaxResult.error();
     }
