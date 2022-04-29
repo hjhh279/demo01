@@ -11,7 +11,6 @@ public class DemoController {
 
     @GetMapping("/get")
     public String test(){
-        OrderProperties orderProperties = new OrderProperties();
-        return orderProperties.getDesc();
+        return "yyk";
     }
 }

@@ -6,4 +6,15 @@ spring:
   application:
     name: demo-application
   profiles:
-    active: dev
+    active: uat
+    # 配置文件上传大小限制
+    servlet:
+      multipart:
+        max-file-size: 100MB
+        max-request-size: 100MB
+minio:
+  endpoint: http://116.205.230.136:9000
+  accessKey: admin
+  secretKey: password
+  bucketName: yyk #存储桶名称
+  port: 9000
